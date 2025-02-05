@@ -7,19 +7,19 @@
             "type": "object",
             "properties": {
                 "before": {
-                    "type": "number"
+                    "type": "string"
                 },
                 "current": {
-                    "type": "number"
+                    "type": "string"
                 },
                 "change": {
-                    "type": "number"
+                    "type": "string"
                 },
                 "target": {
-                    "type": "number"
+                    "type": "string"
                 },
                 "deviation": {
-                    "type": "number"
+                    "type": "string"
                 }
             },
             "required": [
@@ -127,10 +127,10 @@
                             "format": "uri"
                         },
                         "amount": {
-                            "type": "number"
+                            "type": "string"
                         },
                         "usd_value": {
-                            "type": "number"
+                            "type": "string"
                         },
                         "type": {
                             "type": "string",

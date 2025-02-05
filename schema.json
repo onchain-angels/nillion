@@ -1,0 +1,167 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Portfolio Data Schema",
+    "type": "object",
+    "properties": {
+        "_id": {
+            "type": "string",
+            "format": "uuid",
+            "coerce": true
+        },
+        "wallet": {
+            "type": "string"
+        },
+        "chain_id": {
+            "type": "integer"
+        },
+        "farcaster_handle": {
+            "type": "object",
+            "properties": {
+                "$share": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$share"
+            ]
+        },
+        "twitter_handle": {
+            "type": "object",
+            "properties": {
+                "$share": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "$share"
+            ]
+        },
+        "portfolio": {
+            "type": "object",
+            "properties": {
+                "stables": {
+                    "$ref": "#/definitions/portfolioCategory"
+                },
+                "majors": {
+                    "$ref": "#/definitions/portfolioCategory"
+                },
+                "alts": {
+                    "$ref": "#/definitions/portfolioCategory"
+                },
+                "memes": {
+                    "$ref": "#/definitions/portfolioCategory"
+                }
+            },
+            "required": [
+                "stables",
+                "majors",
+                "alts",
+                "memes"
+            ]
+        },
+        "recent_operations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "stables",
+                            "majors",
+                            "alts",
+                            "memes"
+                        ]
+                    },
+                    "coingecko_id": {
+                        "type": "string"
+                    },
+                    "chain_id": {
+                        "type": "integer"
+                    },
+                    "coingecko_chain_id": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "logo_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "amount": {
+                        "type": "number"
+                    },
+                    "usd_value": {
+                        "type": "number"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "increased_position",
+                            "decreased_position",
+                            "new_position",
+                            "closed_position"
+                        ]
+                    }
+                },
+                "required": [
+                    "symbol",
+                    "name",
+                    "category",
+                    "coingecko_id",
+                    "chain_id",
+                    "coingecko_chain_id",
+                    "description",
+                    "logo_url",
+                    "amount",
+                    "usd_value",
+                    "type"
+                ]
+            }
+        }
+    },
+    "required": [
+        "wallet",
+        "chain_id",
+        "farcaster_handle",
+        "twitter_handle",
+        "portfolio",
+        "recent_operations"
+    ],
+    "definitions": {
+        "portfolioCategory": {
+            "type": "object",
+            "properties": {
+                "before": {
+                    "type": "number"
+                },
+                "current": {
+                    "type": "number"
+                },
+                "change": {
+                    "type": "number"
+                },
+                "target": {
+                    "type": "number"
+                },
+                "deviation": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "before",
+                "current",
+                "change",
+                "target",
+                "deviation"
+            ]
+        }
+    }
+}

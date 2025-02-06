@@ -12,6 +12,7 @@ const SCHEMA_ID = process.env.NILLION_SCHEMA_ID;
 
 const sampleData = [
     {
+        timestamp: 1738828412,
         wallet: "0xfE76A5EB3becFF9B0Bfb774faC7D6AF164820094",
         chain_id: 1,
         farcaster_handle: { $allot: "farcaster_handle" },
@@ -89,24 +90,24 @@ async function main() {
 
         // await collection.deleteSchema("xxxxx-xxxx-xxxx-xxxx-xxxxx");
 
-        // const schemas = await collection.getSchemas()
-        // console.log(
-        //     '👀 Schemas:',
-        //     JSON.stringify(schemas, null, 2)
-        // );
+        const schemas = await collection.getSchemas()
+        console.log(
+            '👀 Schemas:',
+            JSON.stringify(schemas, null, 2)
+        );
 
         // Write collection data to nodes encrypting the specified fields ahead of time
-        // const dataWritten = await collection.writeToNodes(sampleData);
-        // console.log(
-        //     '👀 Data written to nodes:',
-        //     JSON.stringify(dataWritten, null, 2)
-        // );
+        const dataWritten = await collection.writeToNodes(sampleData);
+        console.log(
+            '👀 Data written to nodes:',
+            JSON.stringify(dataWritten, null, 2)
+        );
 
-        // // Get the ids of the SecretVault records created
-        // const newIds = [
-        //     ...new Set(dataWritten.map((item) => item.result.data.created).flat()),
-        // ];
-        // console.log('uploaded record ids:', newIds);
+        // Get the ids of the SecretVault records created
+        const newIds = [
+            ...new Set(dataWritten.map((item) => item.result.data.created).flat()),
+        ];
+        console.log('uploaded record ids:', newIds);
 
         // Read all collection data from the nodes, decrypting the specified fields
         const decryptedCollectionData = await collection.readFromNodes({});

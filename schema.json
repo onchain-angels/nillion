@@ -39,6 +39,9 @@
                 "format": "uuid",
                 "coerce": true
             },
+            "timestamp": {
+                "type": "integer"
+            },
             "wallet": {
                 "type": "string"
             },
